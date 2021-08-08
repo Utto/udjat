@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import { SelectChangeEvent } from '@material-ui/core/Select';
 
-import StructureTypeSelect from './TypeSelect';
+import TypeSelect from './TypeSelect';
+import StructureInput from './StructureInput';
 
 type Props = {
   handleChange: (tree: any) => void,
@@ -14,25 +15,28 @@ type setStateFn = (value: string) => void;
 const useStyles = makeStyles({
   container: {
     display: 'flex',
+    justifyContent: 'center',
   },
 });
 
-const StructureInput: React.FC<Props> = ({ handleChange }) => {
+const Form: React.FC<Props> = ({ handleChange }) => {
   const [type, setType] = useState('');
+  const [structure, setStructure] = useState('');
   const classes = useStyles();
 
-  const onChange = (fn: setStateFn) => (e: SelectChangeEvent) => {
-    fn(e.target.value as string);
+  const onChange = (fn: setStateFn) => (e: ChangeEvent | SelectChangeEvent) => {
+    fn((e.target as HTMLInputElement).value as string);
   };
 
-  const onClick = () => handleChange([]);
+  const onClick = () => handleChange(structure.split(', '));
 
   const onChangeType = onChange(setType);
+  const onChangeStructure = onChange(setStructure);
 
   return (
     <div className={classes.container}>
-      <StructureTypeSelect value={type} onChange={onChangeType} />
-
+      <TypeSelect value={type} onChange={onChangeType} />
+      <StructureInput value={structure} onChange={onChangeStructure} />
       <Button
         variant="contained"
         color="primary"
@@ -44,4 +48,4 @@ const StructureInput: React.FC<Props> = ({ handleChange }) => {
   );
 };
 
-export default StructureInput;
+export default Form;

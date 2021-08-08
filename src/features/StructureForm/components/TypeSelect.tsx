@@ -22,20 +22,18 @@ const StructureTypeSelect: React.FC<Props> = ({
     onChange(event);
   };
   return (
-    <div className="input">
-      <FormControl fullWidth>
-        <InputLabel>Select the data structure: </InputLabel>
-        <Select
-          value={value}
-          label="Select the data structure:"
-          onChange={handleChange}
-        >
-          {structures.map(({ id, name }) => (
-            <MenuItem key={id} value={id}>{name}</MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </div>
+    <FormControl>
+      <InputLabel>Select the data structure: </InputLabel>
+      <Select
+        value={value}
+        label="Select the data structure:"
+        onChange={handleChange}
+      >
+        {structures.map(({ id, name }) => (
+          <MenuItem key={id} value={id}>{name}</MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   );
 };
 
