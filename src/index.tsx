@@ -5,12 +5,13 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import { ThemeProvider } from 'react-jss';
 
 import App from 'containers/App';
 import Page from 'containers/Page';
 
-import theme from './jss/theme';
+import { ThemeProvider } from '@material-ui/core/styles';
+
+import theme from './theming/theme';
 
 const history = createBrowserHistory();
 

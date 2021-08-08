@@ -1,16 +1,16 @@
 import { ReactNode } from 'react';
-import { createUseStyles } from 'react-jss';
+import { makeStyles } from '@material-ui/styles';
 
-import baseStyle from '../../../jss/baseStyle';
+import baseStyles from '../../../theming/baseStyle';
 
-const useStyles = createUseStyles(baseStyle, { name: 'Global-Base' });
+const useBaseStyles = makeStyles(baseStyles);
 
 type Props = {
   children: ReactNode;
 };
 
 const App: React.FC<Props> = ({ children }) => {
-  useStyles();
+  useBaseStyles();
   return (
     <div className="app">
       {children}
