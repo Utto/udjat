@@ -6,7 +6,7 @@ export default {
   entry: path.join(__dirname, '/src', 'index.tsx'),
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'bundle.js',
+    filename: 'index.bundle.js',
   },
   devServer: {
     port: 8080,
