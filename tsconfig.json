@@ -67,8 +67,11 @@
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */,
     "outDir": "./dist/",
     "sourceMap": true,
+    "baseUrl": "src/shared",
+    "lib": ["es6", "dom"],
     "noImplicitAny": true,
-    "baseUrl": "src/shared"
+    "noImplicitThis": true,
+    "strictNullChecks": true
   },
   "include": [
     "./src/**/*"

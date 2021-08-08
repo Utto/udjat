@@ -7,6 +7,7 @@ export default {
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'index.bundle.js',
+    clean: true,
   },
   devServer: {
     port: 8080,
