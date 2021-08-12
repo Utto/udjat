@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import { SelectChangeEvent } from '@material-ui/core/Select';
 
+import { parseInput } from '../../../utils/input';
+
 import TypeSelect from './TypeSelect';
 import StructureInput from './StructureInput';
 
@@ -28,7 +30,7 @@ const Form: React.FC<Props> = ({ handleChange }) => {
     fn((e.target as HTMLInputElement).value as string);
   };
 
-  const onClick = () => handleChange(structure.split(', '));
+  const onClick = () => handleChange(parseInput(structure));
 
   const onChangeType = onChange(setType);
   const onChangeStructure = onChange(setStructure);
