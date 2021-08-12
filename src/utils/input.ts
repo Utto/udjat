@@ -2,9 +2,10 @@ import * as R from 'ramda';
 
 const N = R.always(null);
 const isNaN = (x: number): boolean => Number.isNaN(x);
+const toNumber = (x: string) => Number(x);
 
-const parseValue = R.pipe(
-  Number,
+export const parseValue = R.pipe(
+  toNumber,
   R.when(
     isNaN,
     N,

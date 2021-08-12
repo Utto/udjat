@@ -19,15 +19,20 @@ type PropsFn<T, U> = (indices: T[], list: U[]) => T[];
  * @param i Index of the node
  * @returns {number[]} indices of value and it's 1-lvl children
  */
-const getChildIndices = (i: number) => ([i, 2 * i + 1, 2 * i + 2]);
+export const getChildIndices = (i: number) => ([i, 2 * i + 1, 2 * i + 2]);
 
-const pickByIndices = R.pipe(
+export const pickByIndices = R.pipe(
   R.props as PropsFn<number, number|null>,
   R.filter(Boolean),
 );
 
 /** Generates a node: treeNode */
-const nodeFactory = (value: number, index: number, parentId?: string, type?: string): treeNode => ({
+export const nodeFactory = (
+  value: number,
+  index: number,
+  parentId?: string,
+  type?: string,
+): treeNode => ({
   value,
   parentId,
   type,
@@ -37,7 +42,7 @@ const nodeFactory = (value: number, index: number, parentId?: string, type?: str
 /** Takes a list of value-representation of node and it's 1-lvl children
  * and returns their treeNode representations
 */
-const nodeTripletFactory = (list: number[], indices: number[]): treeNode[] => {
+export const nodeTripletFactory = (list: number[], indices: number[]): treeNode[] => {
   const [head, left, right] = list;
 
   const parentNode = nodeFactory(head, indices[0]);
