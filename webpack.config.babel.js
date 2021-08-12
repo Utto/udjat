@@ -27,6 +27,10 @@ export default {
         exclude: /node_modules/,
         use: { loader: 'babel-loader' },
       },
+      {
+        test: /\.png/,
+        type: 'asset/inline',
+      },
     ],
   },
   plugins: [
