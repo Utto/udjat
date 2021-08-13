@@ -21,7 +21,7 @@ describe(`${prefix}/initBST`, () => {
       depth: 1,
       id: '0-4',
       parentId: undefined,
-      type: undefined,
+      type: '',
       value: 4,
       left: {
         depth: 2,
