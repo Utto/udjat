@@ -1,8 +1,7 @@
 import { ReactNode, useState } from 'react';
 
 import Form from '../../../features/StructureForm/components/Form';
-
-import valuesToNodes from '../../../utils/bst';
+import BST from '../../../features/BST/components/Tree';
 
 type Props = {
   children: ReactNode;
@@ -10,10 +9,10 @@ type Props = {
 
 const Page: React.FC<Props> = () => {
   const [list, setList] = useState([]);
-  console.log(list, valuesToNodes(list));
   return (
     <div className="page">
       <Form handleChange={setList} />
+      <BST list={list} />
     </div>
   );
 };
