@@ -28,18 +28,19 @@ export const getShift = R.pipe(
   ),
 );
 
+export const cleanNode = R.omit(['left', 'right']);
+
 /** Breadth First; takes a root node and returns an array of nodes
  * with coordinates
  */
 export const getPositionedNodes = (root: treeNode) => {
   if (!root) return [];
   const treeDepth = getTreeDepth(root);
-  const cleanNode = R.omit(['left', 'right']);
 
   const nodes = [];
   const map = {
     [root.id]: {
-      x: WIDTH / 2,
+      x: (WIDTH / 2) - (NODE_SIZE / 2),
       y: 25,
     },
   };
@@ -79,10 +80,6 @@ export const getPositionedNodes = (root: treeNode) => {
       ...cleanNode(node),
       x,
       y,
-      line: {
-        from: { x: parentData.x, y: parentData.y },
-        to: { x, y },
-      },
     });
     if (node.left) queue.push(node.left);
     if (node.right) queue.push(node.right);
