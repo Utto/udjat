@@ -11,6 +11,7 @@ const theme = createTheme({
     primary: {
       main: '#26a69a',
     },
+    mode: 'dark',
   },
   spacing: 2,
   components: {
@@ -18,7 +19,6 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           width: '250px',
-          background: '#fff',
         },
       },
     },
