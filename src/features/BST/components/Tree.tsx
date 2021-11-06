@@ -16,7 +16,6 @@ const useStyles = makeStyles({
   container: {
     position: 'relative',
     marginTop: '20px',
-    border: '1px solid black',
     overflow: 'visible',
   },
 });
