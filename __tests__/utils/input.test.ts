@@ -1,9 +1,9 @@
 import {
   parseValue,
   parseInput,
-} from '../../src/utils/input';
+} from '../../src/shared/utils/input';
 
-const prefix = 'src/utils/input';
+const prefix = 'src/shared/utils/input';
 
 describe(`${prefix}/parseValue`, () => {
   test('It should convert a string representation of number to actual number', () => {

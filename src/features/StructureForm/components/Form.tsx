@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import { SelectChangeEvent } from '@material-ui/core/Select';
 
-import { parseInput } from '../../../utils/input';
+import { parseInput } from 'utils/input';
 
 import TypeSelect from './TypeSelect';
 import StructureInput from './StructureInput';

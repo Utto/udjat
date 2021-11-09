@@ -37,4 +37,5 @@ export default {
     new HtmlWebpackPlugin({ template: './src/index.html' }),
     new Dotenv(),
   ],
+  devtool: 'eval-cheap-source-map',
 };
