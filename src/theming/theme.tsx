@@ -22,6 +22,14 @@ const theme = createTheme({
         },
       },
     },
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          width: '300px',
+          padding: '20px 10px',
+        },
+      },
+    },
   },
 });
 

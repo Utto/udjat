@@ -5,11 +5,11 @@ import { SelectChangeEvent } from '@material-ui/core/Select';
 
 import { parseInput } from 'utils/input';
 
-import TypeSelect from './TypeSelect';
-import StructureInput from './StructureInput';
+import TypeSelect from './components/TypeSelect';
+import StructureInput from './components/StructureInput';
 
 type Props = {
-  handleChange: (tree: any) => void,
+  handleChange: (type: any, tree: any) => void,
 };
 
 type setStateFn = (value: string) => void;
@@ -30,7 +30,7 @@ const Form: React.FC<Props> = ({ handleChange }) => {
     fn((e.target as HTMLInputElement).value as string);
   };
 
-  const onClick = () => handleChange(parseInput(structure));
+  const onClick = () => handleChange(type, parseInput(structure));
 
   const onChangeType = onChange(setType);
   const onChangeStructure = onChange(setStructure);

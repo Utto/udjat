@@ -1,15 +1,15 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 
+import { InputList } from 'types/input';
+
 import { initBST } from '../utils/convertToBst';
 import { getPositionedNodes } from '../utils/tree';
-
-import { inputList } from '../utils/types';
 
 import Node from './Node';
 
 type Props = {
-  list: inputList,
+  list: InputList,
 }
 
 const useStyles = makeStyles({

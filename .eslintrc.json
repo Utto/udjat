@@ -33,6 +33,7 @@
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
     "no-undef": "off",
+    "no-underscore-dangle": "off",
     "no-continue": "off",
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",

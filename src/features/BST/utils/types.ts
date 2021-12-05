@@ -1,10 +1,8 @@
-export type inputList = (number | null)[];
-
-export type treeNode = {
+export type TreeNode = {
   id: string,
   value: number,
-  left: treeNode,
-  right: treeNode,
+  left: TreeNode,
+  right: TreeNode,
   parentId?: string,
   type: string,
   depth: number,
