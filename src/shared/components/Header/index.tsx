@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Tooltip, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 

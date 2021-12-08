@@ -22,7 +22,7 @@ const App: React.FC<Props> = ({ children }) => {
   useBaseStyles();
 
   const dispatch = useDispatch();
-  const UIState = useSelector((state: RootState) => state.UIState);
+  const { UIState, historyState } = useSelector((state: RootState) => state);
 
   const handleHistoryClick = () => dispatch(toggle('history'));
 
@@ -32,7 +32,11 @@ const App: React.FC<Props> = ({ children }) => {
   return (
     <div className="app">
       <Header buttons={headerButtons} />
-      <History handleClose={handleHistoryClick} isOpen={UIState.history} />
+      <History
+        list={historyState.data}
+        handleClose={handleHistoryClick}
+        isOpen={UIState.history}
+      />
       {children}
     </div>
   );

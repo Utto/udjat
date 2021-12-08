@@ -1,16 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { StructureData } from 'state/structure';
+import { StructureData } from 'types/input';
+import { HistoryItem } from '../types';
 
-import addToFixed from '../utils';
+import addToFixed from '../utils/arrayOfN';
 
-type HistoryItem = {
-  type: string,
-  list: string,
-  createdDate: string,
-}
-
-export const initialState = {
+const initialState = {
   data: [] as HistoryItem[],
 };
 
@@ -23,7 +18,11 @@ const historySlice = createSlice({
     addHistoryItem: (state, { payload }: PayloadAction<StructureData>) => ({
       ...state,
       data: addToHistory(
-        { ...payload, list: JSON.stringify(payload.list), createdDate: new Date().toISOString() },
+        {
+          ...payload,
+          structure: JSON.stringify(payload.list),
+          createdDate: new Date().toISOString(),
+        },
         state.data,
       ),
     }),

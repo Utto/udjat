@@ -1,12 +1,7 @@
 // Structure state lives in shared for now as it doesn't belong to a particular feature
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { InputList } from 'types/input';
-
-export type StructureData = {
-  type: string,
-  list: InputList,
-};
+import { StructureData } from 'types/input';
 
 export const initialState: StructureData = {
   type: '',

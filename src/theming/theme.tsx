@@ -8,12 +8,21 @@ const theme = createTheme({
       light: '#4f5b62',
       contrastText: '#fff',
     },
+    uText: {
+      main: '#fff',
+      light: '#D5D5D5',
+    },
     primary: {
       main: '#26a69a',
     },
     mode: 'dark',
   },
   spacing: 2,
+  typography: {
+    h5: {
+      fontSize: 14,
+    },
+  },
   components: {
     MuiInputBase: {
       styleOverrides: {
@@ -30,17 +39,28 @@ const theme = createTheme({
         },
       },
     },
+    MuiFab: {
+      styleOverrides: {
+        root: {
+          minHeight: 0,
+          width: '20px',
+          height: '20px',
+        },
+      },
+    },
   },
 });
 
 declare module '@material-ui/core/styles' {
   interface Palette {
     uBackground: Palette['primary'];
+    uText: Palette['primary'];
   }
 
   // allow configuration using `createTheme`
   interface PaletteOptions {
     uBackground?: PaletteOptions['primary'];
+    uText?: PaletteOptions['primary'];
   }
 }
 
