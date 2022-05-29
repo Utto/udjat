@@ -1,7 +1,6 @@
-import structureTypes from 'constants/structureTypes';
+import { Structure } from 'types/structure';
 
-export type HistoryItem = {
-  type: keyof typeof structureTypes,
-  structure: string,
+export type HistoryItem = Structure & {
+  value: string,
   createdDate: string,
 };

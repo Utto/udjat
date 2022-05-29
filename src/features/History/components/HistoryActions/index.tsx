@@ -3,20 +3,18 @@ import { Tooltip, IconButton } from '@material-ui/core';
 import {
   ExpandMore,
   ExpandLess,
-  DeleteForever,
-  Restore,
 } from '@material-ui/icons';
 
-import { SvgIconTypeMap } from '@material-ui/core/SvgIcon';
+import Color from 'types/color';
 
-type Color = SvgIconTypeMap['props']['color'];
+type Action = {
+  title: string,
+  Icon: typeof ExpandMore, // deriving MUI icon type
+  color?: Color,
+  fn: () => void,
+}
 
-const actions = [
-  { title: 'Restore', Icon: Restore },
-  { title: 'Delete', Icon: DeleteForever, color: 'error' },
-];
-
-const HistoryActions: React.FC<{}> = () => {
+const HistoryActions: React.FC<{ actions: Action[] }> = ({ actions }) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = () => setIsOpen(!isOpen);
   const PrimaryIcon = isOpen ? ExpandLess : ExpandMore;
@@ -29,10 +27,15 @@ const HistoryActions: React.FC<{}> = () => {
       </Tooltip>
       {isOpen && (
         <>
-          {actions.map(({ title, Icon, color = 'default' }) => (
+          {actions.map(({
+            title,
+            Icon,
+            color,
+            fn,
+          }) => (
             <Tooltip title={title} key={title} placement="left">
-              <IconButton aria-label={title} size="small">
-                <Icon fontSize="inherit" color={color as Color} />
+              <IconButton aria-label={title} size="small" onClick={fn}>
+                <Icon fontSize="inherit" color={color} />
               </IconButton>
             </Tooltip>
           ))}

@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from 'state/store';
 import { makeStyles } from '@material-ui/styles';
 
-import { InputList } from 'types/input';
+import { Structure } from 'types/structure';
 
 import { setStructure } from 'state/structure';
 import { addHistoryItem } from '../../../features/History/state/history';
@@ -15,20 +15,23 @@ import styles from './Page.styles';
 const useStyles = makeStyles(styles);
 
 const Page: React.FC<{}> = () => {
-  const { list } = useSelector((state: RootState) => state.structureState);
+  const { value, type } = useSelector((state: RootState) => state.structureState);
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const setList = (type: string, data: InputList) => {
-    const payload = { type, list: data };
+  const setList = (payload: Structure) => {
     dispatch(setStructure(payload));
     dispatch(addHistoryItem(payload));
   };
 
   return (
     <div className={classes.page}>
-      <Form handleChange={setList} />
-      <BST list={list} />
+      <Form
+        savedValue={value.join(', ')}
+        savedType={type}
+        handleChange={setList}
+      />
+      <BST list={value} />
     </div>
   );
 };

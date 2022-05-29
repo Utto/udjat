@@ -1,4 +1,4 @@
-import { InputList } from 'types/input';
+import { StructureValue } from 'types/structure';
 import { TreeNode } from './types';
 
 /**
@@ -9,12 +9,13 @@ import { TreeNode } from './types';
 export const getChildIndices = (i: number) => ([2 * i + 1, 2 * i + 2]);
 
 export const initBST = (
-  list: InputList,
+  list: StructureValue,
   type = '',
   index = 0,
   depth = 1,
   parentId?: string,
 ): TreeNode => {
+  // TODO: anyPass?
   if (index > list.length - 1) return null;
   if (!list.length) return null;
   if (list[index] === null) return null;

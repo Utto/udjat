@@ -1,18 +1,18 @@
-import React, { useState, ChangeEvent } from 'react';
+import { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
-import { SelectChangeEvent } from '@material-ui/core/Select';
 
 import { parseInput } from 'utils/input';
+import { StructureType, Structure } from 'types/structure';
 
 import TypeSelect from './components/TypeSelect';
 import StructureInput from './components/StructureInput';
 
 type Props = {
-  handleChange: (type: any, tree: any) => void,
+  savedType: StructureType,
+  savedValue: string,
+  handleChange: (payload: Structure) => void,
 };
-
-type setStateFn = (value: string) => void;
 
 const useStyles = makeStyles({
   container: {
@@ -21,24 +21,20 @@ const useStyles = makeStyles({
   },
 });
 
-const Form: React.FC<Props> = ({ handleChange }) => {
-  const [type, setType] = useState('');
-  const [structure, setStructure] = useState('');
+const Form: React.FC<Props> = ({ savedType, savedValue, handleChange }) => {
+  const [type, setType] = useState<StructureType>('');
+  const [value, setValue] = useState('');
   const classes = useStyles();
 
-  const onChange = (fn: setStateFn) => (e: ChangeEvent | SelectChangeEvent) => {
-    fn((e.target as HTMLInputElement).value as string);
-  };
+  useEffect(() => setType(savedType), [savedType]);
+  useEffect(() => setValue(savedValue), [savedValue]);
 
-  const onClick = () => handleChange(type, parseInput(structure));
-
-  const onChangeType = onChange(setType);
-  const onChangeStructure = onChange(setStructure);
+  const onClick = () => handleChange({ type, value: parseInput(value) });
 
   return (
     <div className={classes.container}>
-      <TypeSelect value={type} onChange={onChangeType} />
-      <StructureInput value={structure} onChange={onChangeStructure} />
+      <TypeSelect value={type} onChange={setType} />
+      <StructureInput value={value} onChange={setValue} />
       <Button
         variant="contained"
         color="primary"
