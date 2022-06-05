@@ -24,7 +24,7 @@ const historySlice = createSlice({
           createdDate: new Date().toISOString(),
         },
         state.data,
-      ),
+      ) as HistoryItem[],
     }),
   },
 });

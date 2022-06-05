@@ -1,7 +1,7 @@
 import {
   parseValue,
   parseInput,
-} from '../../src/shared/utils/input';
+} from '../../../src/shared/utils/input';
 
 const prefix = 'src/shared/utils/input';
 
