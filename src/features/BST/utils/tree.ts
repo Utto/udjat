@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import { treeNode } from './types';
+import { TreeNode } from './types';
 
 import {
   WIDTH,
@@ -9,7 +9,7 @@ import {
 } from '../constants';
 
 /** Calculates a full depth of BST */
-export const getTreeDepth = (root: treeNode): number => {
+export const getTreeDepth = (root: TreeNode): number => {
   if (!root) return 0;
   const leftHeight = getTreeDepth(root.left);
   const rightHeight = getTreeDepth(root.right);
@@ -33,7 +33,7 @@ export const cleanNode = R.omit(['left', 'right']);
 /** Breadth First; takes a root node and returns an array of nodes
  * with coordinates
  */
-export const getPositionedNodes = (root: treeNode) => {
+export const getPositionedNodes = (root: TreeNode) => {
   if (!root) return [];
   const treeDepth = getTreeDepth(root);
 

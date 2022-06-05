@@ -1,5 +1,14 @@
 import { ReactNode } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/styles';
+import HistoryIcon from '@material-ui/icons/History';
+
+import { RootState } from 'state/store';
+
+import Header from 'components/Header';
+import History from '../../../features/History';
+
+import { toggle } from '../../state/ui';
 
 import baseStyles from '../../../theming/baseStyle';
 
@@ -11,8 +20,23 @@ type Props = {
 
 const App: React.FC<Props> = ({ children }) => {
   useBaseStyles();
+
+  const dispatch = useDispatch();
+  const { UIState, historyState } = useSelector((state: RootState) => state);
+
+  const handleHistoryClick = () => dispatch(toggle('history'));
+
+  const headerButtons = [
+    { name: 'History', icon: <HistoryIcon />, fn: handleHistoryClick },
+  ];
   return (
     <div className="app">
+      <Header buttons={headerButtons} />
+      <History
+        list={historyState.data}
+        handleClose={handleHistoryClick}
+        isOpen={UIState.history}
+      />
       {children}
     </div>
   );

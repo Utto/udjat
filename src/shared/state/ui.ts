@@ -4,7 +4,7 @@ type UIState = {
   history: boolean,
 };
 
-const initialState: UIState = {
+export const initialState: UIState = {
   history: false,
 };
 

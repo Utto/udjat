@@ -1,12 +1,12 @@
-import React from 'react';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select, { SelectChangeEvent } from '@material-ui/core/Select';
+import { StructureType } from 'types/structure';
 
 type Props = {
-  value: string,
-  onChange: (arg0: SelectChangeEvent) => void,
+  value: StructureType,
+  onChange: (arg0: StructureType) => void,
 };
 
 const structures = [
@@ -17,10 +17,7 @@ const StructureTypeSelect: React.FC<Props> = ({
   value,
   onChange,
 }) => {
-  const handleChange = (event: SelectChangeEvent) => {
-    console.log('e', event.target.value);
-    onChange(event);
-  };
+  const handleChange = (event: SelectChangeEvent) => onChange(event.target.value as StructureType);
   return (
     <FormControl>
       <InputLabel>Select the data structure: </InputLabel>
